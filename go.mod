@@ -1,4 +1,4 @@
-module github.com/teoreed/go_easy_ride
+module github.com/teoreed/EasyRide
 
 go 1.16
 
