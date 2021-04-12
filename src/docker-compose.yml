@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  mapping-service:
+    build: ./mapping
+    volumes: 
+      - ./mapping:/app    
+    environment:
+      - API_KEY=AIzaSyBhudWW150PTKEqXJuuAhr-sDsL6Ip4Is4
+
+  roster-service:
+    build: ./roster
+    ports:
+      - 2222:2222
+    volumes: 
+      - ./roster:/app  
+
+  token-service:
+    build: ./token
+    ports:
+      - 3333:3333
+    volumes: 
+      - ./token:/app  
+
+  ride-service:
+    build: ./ride
+    ports: 
+      - 4444:4444
+    volumes: 
+      - ./ride:/app  
+    environment: 
+      - ROSTER_SERVICE_URL=http://roster-service:2222
+      - MAPPING_SERVICE_URL=http://mapping-service:1111   
+networks:
+  default:
+    driver: bridge
+
+# In order to run this file, which will build and create the whole envrionment needed to run the enterprise run the code:
+  # docker-compose up
