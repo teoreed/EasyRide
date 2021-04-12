@@ -6,7 +6,7 @@ services:
     volumes: 
       - ./mapping:/app    
     environment:
-      - API_KEY=AIzaSyBhudWW150PTKEqXJuuAhr-sDsL6Ip4Is4
+      - API_KEY=**API_KEY**
 
   roster-service:
     build: ./roster
